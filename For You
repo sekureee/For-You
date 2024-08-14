@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            color: #ff69b4;
+            margin-top: 0;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin: 15px 0;
+        }
+
+        .popup button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #ff85c1;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff69b4;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="popup-container" id="popup-container">
+        <!-- Bagian 1 -->
+        <div class="popup" id="popup1">
+            <h2>Hai, Syaa!</h2>
+            <div class="moon">🌕</div>
+            <p>Aku punya sesuatu yang pengen aku sampein</p>
+            <button onclick="nextPopup(1)">Lanjutkan</button>
+        </div>
+
+        <!-- Bagian 2 -->
+        <div class="popup" id="popup2">
+            <h2>Kamu tau?</h2>
+            <p>Bulannya bagus yah? i mean the moon is beautiful isn't.</p>
+            <button onclick="nextPopup(2)">Lanjutkan</button>
+        </div>
+
+        <!-- Bagian 3 -->
+        <div class="popup" id="popup3">
+            <h2>Terakhir...</h2>
+            <p>Kamu adalah seseorang yang sangat spesial, dan aku beruntung bisa kenal sama kamu:3</p>
+            <button onclick="closePopup()">Terima Kasih 😊</button>
+        </div>
+    </div>
+
+    <script>
+        // Menampilkan pop-up pertama setelah halaman dibuka
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('popup-container').style.display = 'flex';
+                document.getElementById('popup1').style.display = 'block';
+            }, 1000); // Pop-up muncul 1 detik setelah halaman dibuka
+        };
+
+        // Fungsi untuk beralih ke pop-up berikutnya
+        function nextPopup(current) {
+            document.getElementById('popup' + current).style.display = 'none';
+            document.getElementById('popup' + (current + 1)).style.display = 'block';
+        }
+
+        // Fungsi untuk menutup pop-up
+        function closePopup() {
+            document.getElementById('popup-container').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
